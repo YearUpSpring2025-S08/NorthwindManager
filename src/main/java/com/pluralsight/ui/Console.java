@@ -61,15 +61,25 @@ public class Console {
         return result;
     }
 
-    public String promptForString(String prompt) {
+    public String promptForString(String prompt){
+        return this.promptForString(prompt, false);
+    }
+
+    public String promptForString(String prompt, boolean allowEmpty) {
         while (true) {
             System.out.print(prompt);
             String input = scanner.nextLine().trim().toLowerCase();
 
-            if (input.isEmpty()) {
+            if (input.isEmpty() && !allowEmpty) {
                 System.out.println("Input cannot be empty.");
             } else {
-                return input.substring(0, 1).toUpperCase() + input.substring(1).toLowerCase();
+                if(input.length() >= 2){
+                    return input.substring(0, 1).toUpperCase() + input.substring(1).toLowerCase();
+                }
+                else{
+                    return input.toUpperCase();
+                }
+
             }
         }
     }
