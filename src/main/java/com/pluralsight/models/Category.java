@@ -2,11 +2,11 @@ package com.pluralsight.models;
 
 public class Category {
     private int id;
-    private String CategoryName;
+    private String categoryName;
 
     public Category(int id, String categoryName) {
         this.id = id;
-        CategoryName = categoryName;
+        this.categoryName = categoryName;
     }
 
     public int getId() {
@@ -18,10 +18,10 @@ public class Category {
     }
 
     public String getCategoryName() {
-        return CategoryName;
+        return categoryName;
     }
 
     public void setCategoryName(String categoryName) {
-        CategoryName = categoryName;
+        this.categoryName = categoryName;
     }
 }
