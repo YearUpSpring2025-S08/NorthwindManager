@@ -3,6 +3,7 @@ package com.pluralsight.ui;
 import com.pluralsight.data.NorthwindDataManager;
 import com.pluralsight.models.Category;
 import com.pluralsight.models.Employee;
+import com.pluralsight.models.Product;
 
 import java.util.List;
 
@@ -94,6 +95,14 @@ public class UserInterface {
     }
 
     private void listProductsAll() {
+        List<Product> products = dataManager.getProducts();
+        if(products.stream().count() <=0 ){
+            System.out.println("No Products found.");
+        }
+        else{
+            products.stream().forEach(p -> System.out.println(p));
+        }
+
     }
 
     private void listCategoriesAll() {
