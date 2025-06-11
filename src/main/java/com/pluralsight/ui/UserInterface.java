@@ -29,6 +29,63 @@ public class UserInterface {
     }
 
     private void showHomeMenu(){
-        System.out.println("Home Menu here");
+
+
+
+        while(true){
+
+            String[] menuOptions = {
+                    "list product categories",
+                    "list all products",
+                    "list products by category",
+                    "list products by price",
+                    "list all suppliers",
+                    "list products by supplier",
+                    "exit"
+            };
+
+            int userChoice = console.promptForOption(menuOptions);
+            switch (userChoice){
+                case 1:
+                    listCategoriesAll();
+                    break;
+                case 2:
+                    listProductsAll();
+                    break;
+                case 3:
+                    listProductsByCategory();
+                    break;
+                case 4:
+                    listProductsByPrice();
+                    break;
+                case 5:
+                    listSuppliersAll();
+                    break;
+                case 6:
+                    listProductsBySupplier();
+                    break;
+                case 7:
+                    System.exit(0);
+            }
+        }
+
+    }
+
+    private void listProductsBySupplier() {
+    }
+
+    private void listSuppliersAll() {
+    }
+
+    private void listProductsByPrice() {
+    }
+
+    private void listProductsByCategory() {
+    }
+
+    private void listProductsAll() {
+    }
+
+    private void listCategoriesAll() {
     }
 }
