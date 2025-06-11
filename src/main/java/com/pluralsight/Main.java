@@ -1,6 +1,8 @@
 package com.pluralsight;
 
-import com.pluralsight.data.NorthwindDataManager;
+import com.pluralsight.data.CategoriesDao;
+import com.pluralsight.data.ProductsDao;
+import com.pluralsight.data.SuppliersDao;
 import com.pluralsight.ui.UserInterface;
 import org.apache.commons.dbcp2.BasicDataSource;
 
@@ -13,8 +15,10 @@ public class Main {
         }
 
         BasicDataSource basicDataSource = getBasicDataSourceFromArgs(args);
-        NorthwindDataManager dataManager = new NorthwindDataManager(basicDataSource);
-        UserInterface ui = new UserInterface(dataManager);
+        CategoriesDao categoriesDao = new CategoriesDao(basicDataSource);
+        ProductsDao productsDao = new ProductsDao(basicDataSource);
+        SuppliersDao suppliersDao = new SuppliersDao(basicDataSource);
+        UserInterface ui = new UserInterface(categoriesDao, productsDao, suppliersDao);
 
         ui.display();
 
