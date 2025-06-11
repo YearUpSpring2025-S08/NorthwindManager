@@ -1,14 +1,20 @@
 package com.pluralsight.ui;
 
+import com.pluralsight.data.NorthwindDataManager;
+import com.pluralsight.models.Category;
 import com.pluralsight.models.Employee;
+
+import java.util.List;
 
 public class UserInterface {
 
     private Employee currentEmployee;
     private Console console;
+    private NorthwindDataManager dataManager;
 
-    public UserInterface(){
+    public UserInterface(NorthwindDataManager dataManager){
         this.console = new Console();
+        this.dataManager = dataManager;
     }
 
 
@@ -49,5 +55,8 @@ public class UserInterface {
     }
 
     private void listCategoriesAll() {
+        List<Category> categories = dataManager.getCategories();
+
+
     }
 }
