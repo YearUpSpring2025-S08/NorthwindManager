@@ -89,19 +89,30 @@ public class UserInterface {
     }
 
     private void listProductsByPrice() {
+        double minPrice = console.promptForDouble("Enter the smallest price:");
+        double maxPrice = console.promptForDouble("Enter the largest price:");
+        List<Product> products = dataManager.getProductsByPrice(minPrice, maxPrice);
+        displayProducts(products);
     }
 
     private void listProductsByCategory() {
+        String categoryName = console.promptForString("Enter a Category Name:");
+        Category category = dataManager.getCategoryByName(categoryName);
+        if(category != null){
+            //System.out.println("you selected category id : " + category.getId());
+            List<Product> products = dataManager.getProductsByCategory(category);
+            displayProducts(products);
+        }
+        else{
+            System.out.println("There is no such category!");
+            return;
+        }
+
     }
 
     private void listProductsAll() {
         List<Product> products = dataManager.getProducts();
-        if(products.stream().count() <=0 ){
-            System.out.println("No Products found.");
-        }
-        else{
-            products.stream().forEach(p -> System.out.println(p));
-        }
+        displayProducts(products);
 
     }
 
@@ -114,5 +125,14 @@ public class UserInterface {
             categories.stream().forEach(c -> System.out.println(c.getCategoryName()));
         }
 
+    }
+
+    private void displayProducts(List<Product> products){
+        if(products.stream().count() <=0 ){
+            System.out.println("No Products found.");
+        }
+        else{
+            products.stream().forEach(p -> System.out.println(p));
+        }
     }
 }
